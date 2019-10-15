@@ -1,0 +1,21 @@
+
+version: '3.0'
+
+volumes:
+  postgres-data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:10.3
+
+    ports:
+      - '5432:5432'
+
+    environment:
+      POSTGRES_USER: dbalc
+      POSTGRES_PASSWORD: dbalc
+      POSTGRES_DB: dbalc
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
