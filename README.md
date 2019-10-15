@@ -4,7 +4,9 @@ alembic init migrations
 ```
 
 `PYTHONPATH=. alembic revision -m "commit"`
+
 `PYTHONPATH=. alembic revision --autogenerate -m "commit"`
+
 `PYTHONPATH=. alembic upgrade head`
 
 
