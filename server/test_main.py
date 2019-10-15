@@ -1,7 +1,6 @@
-import pytest
-import asyncio
 from uuid import uuid4
 
+import pytest
 from databases import Database
 
 from server.accounts.service import AccountService, Account, AccountID
