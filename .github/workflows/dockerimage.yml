@@ -10,9 +10,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Login to docker.io
+    - name: Login to docker.pkg.github.com
       run:  echo ${{ secrets.DOCKER_PASSWORD }} | docker login docker.pkg.github.com -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
     - name: Build the Docker image
-      run: docker build . --file Dockerfile -t docker.pkg.github.com/supadrupa/dbalc/my-image-name:lastest
+      run: docker build . --file Dockerfile -t docker.pkg.github.com/${GITHUB_REPOSITORY}/my-image-name:lastest
     - name: Push image to GitHub Packages
-      run: docker push docker.pkg.github.com/supadrupa/dbalc/my-image-name:lastest
+      run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/my-image-name:lastest
