@@ -10,5 +10,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Login to docker.io
+      run:  echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-image-name:lastest
+    - name: Push image to GitHub Packages
+      run: docker push docker.pkg.github.com/supadrupa/dbalc/my-image-name:latest
