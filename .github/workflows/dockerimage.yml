@@ -15,4 +15,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:lastest
     - name: Push image to GitHub Packages
-      run: docker push docker.pkg.github.com/supadrupa/dbalc/my-image-name:latest
+      run: docker push my-image-name:lastest
