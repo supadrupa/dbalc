@@ -11,8 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Login to docker.io
-      run:  echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
+      run:  echo ${{ secrets.DOCKER_PASSWORD }} | docker login docker.pkg.github.com -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:lastest
     - name: Push image to GitHub Packages
-      run: docker push ${{ secrets.DOCKER_LOGIN }}/my-image-name:lastest
+      run: docker push my-image-name:lastest
