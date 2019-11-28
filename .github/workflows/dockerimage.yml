@@ -15,4 +15,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:lastest
     - name: Push image to GitHub Packages
-      run: docker push my-image-name:lastest
+      run: docker push ${{ secrets.DOCKER_LOGIN }}/my-image-name:lastest
