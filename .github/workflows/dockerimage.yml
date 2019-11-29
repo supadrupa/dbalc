@@ -1,6 +1,9 @@
 name: Docker Image CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
 
@@ -13,6 +16,6 @@ jobs:
     - name: Login to docker.pkg.github.com
       run:  echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
     - name: Build the Docker image
-      run: docker build . --file Dockerfile -t docker.pkg.github.com/${GITHUB_REPOSITORY}/my-image-name:lastest
+      run: docker build -t docker.pkg.github.com/${{ github.repository }}/dbalc:lastest .
     - name: Push image to GitHub Packages
-      run: docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/my-image-name:lastest
+      run: docker push docker.pkg.github.com/${{ github.repository }}/dbalc:lastest
