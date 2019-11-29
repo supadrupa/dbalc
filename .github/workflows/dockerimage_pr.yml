@@ -1,0 +1,21 @@
+name: Docker Image CI for PR
+
+on: pull_request
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - run:   echo ::set-env name=PULL_NUMBER::$(echo "$GITHUB_REF" | awk -F / '{print $3}')
+      shell: bash
+
+#    - name: Login to docker.pkg.github.com
+#      run:  echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+#    - name: Build the Docker image
+#      run: docker build -t docker.pkg.github.com/${{ github.repository }}/dbalc:lastest .
+#    - name: Push image to GitHub Packages
+#      run: docker push docker.pkg.github.com/${{ github.repository }}/dbalc:lastest
