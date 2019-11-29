@@ -73,3 +73,4 @@ def downgrade():
     op.drop_table('account')
 ```
 схема для миграции описывается через sqlalchemy
+
