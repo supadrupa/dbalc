@@ -14,7 +14,7 @@ jobs:
       run:  echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
     - name: Build the Docker image
       env:
-        pr_number: ${{ format('pr{0}', $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")}}
+        pr_number: ${{ format('pr{0}', {{jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"}}}}
       run: docker build -t docker.pkg.github.com/${{ github.repository }}/dbalc:{{ pr_number }} .
     - name: Push image to GitHub Packages
       run: docker push docker.pkg.github.com/${{ github.repository }}/dbalc:{{ pr_number }}
