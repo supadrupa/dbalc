@@ -5,7 +5,7 @@ attrs==19.3.0
 databases==0.2.5
 importlib-metadata==0.23
 inflect==2.1.0
-Mako==1.1.0
+Mako==1.2.2
 MarkupSafe==1.1.1
 more-itertools==7.2.0
 packaging==19.2
